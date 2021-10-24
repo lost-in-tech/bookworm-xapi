@@ -350,5 +350,3 @@ MigrationBackup/
 .ionide/
 
 TestReports/
-/.terraform/.terraform.*
-/.terraform/.terraform/*

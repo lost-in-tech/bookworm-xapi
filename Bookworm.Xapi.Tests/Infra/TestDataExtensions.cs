@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Bookworm.Xapi.Tests.Infra
 {
@@ -6,12 +7,19 @@ namespace Bookworm.Xapi.Tests.Infra
     {
         public static IEnumerable<object[]> ToTestData<T>(this IEnumerable<T> source)
         {
-            if (source == null) yield break;
+            if (source == null) return Enumerable.Empty<object[]>();
 
-            foreach (var item in source)
+            var result = new List<object[]>();
+
+            foreach(var item in source)
             {
-                yield return new object[] { item };
+                result.Add(new object[]
+                {
+                    item
+                });
             }
+
+            return result;
         }
     }
 }

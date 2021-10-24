@@ -1,12 +1,16 @@
-﻿using Bookworm.Xapi.Infrastructure.SwaggerEx;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using Bolt.Common.Extensions;
-using Bookworm.Xapi.Infrastructure;
+using Microsoft.Extensions.Logging;
 
 namespace Bookworm.Xapi
 {
@@ -17,50 +21,36 @@ namespace Bookworm.Xapi
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        public static IConfiguration Configuration { get; private set; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        // This method gets called by the runtime. Use this method to add services to the container
         public void ConfigureServices(IServiceCollection services)
         {
-            ServiceConfiguration.Configure(services);
-
-            services.AddHttpContextAccessor();
-
-            services.AddControllers()
-                .AddJsonOptions(opt => opt.JsonSerializerOptions.ApplyBasicOptions());
-
-            services.AddHealthChecks();
-            services.AddDefaultSwaggerGen(AppDomain.CurrentDomain.FriendlyName, "v1");
-            services.AddSwaggerGenNewtonsoftSupport();
+            services.AddControllers();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseExceptionHandler(UnhandledErrorHandler.Handle<Startup>);
-            }
-            
-            app.UsePathBase("/xapi-bookworm");
-            
+
+            app.UseHttpsRedirection();
+
             app.UseRouting();
 
             app.UseAuthorization();
-            
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapHealthChecks("/health");
-                endpoints.MapPing();
                 endpoints.MapControllers();
+                endpoints.MapGet("/", async context =>
+                {
+                    await context.Response.WriteAsync("Welcome to running ASP.NET Core on AWS Lambda");
+                });
             });
-
-            app.UseSwagger();
-            app.UseDefaultSwaggerUI(AppDomain.CurrentDomain.FriendlyName);
         }
     }
 }
