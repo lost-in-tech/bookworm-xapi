@@ -11,11 +11,10 @@ resource "aws_apigatewayv2_integration" "api" {
   api_id           = aws_apigatewayv2_api.api.id
   integration_type = "AWS_PROXY"
 
-  connection_type           = "INTERNET"
-  content_handling_strategy = "CONVERT_TO_TEXT"
-  integration_method        = "ANY"
-  integration_uri           = aws_lambda_function.app.invoke_arn
-  passthrough_behavior      = "WHEN_NO_MATCH"
+  connection_type      = "INTERNET"
+  integration_method   = "ANY"
+  integration_uri      = aws_lambda_function.app.invoke_arn
+  passthrough_behavior = "WHEN_NO_MATCH"
 }
 
 resource "aws_apigatewayv2_route" "api" {
