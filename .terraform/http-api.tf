@@ -9,7 +9,7 @@ resource "aws_apigatewayv2_stage" "api" {
 
 resource "aws_apigatewayv2_integration" "api" {
   api_id           = aws_apigatewayv2_api.api.id
-  integration_type = "AWS"
+  integration_type = "AWS_PROXY"
 
   connection_type           = "INTERNET"
   content_handling_strategy = "CONVERT_TO_TEXT"
