@@ -35,3 +35,10 @@ resource "aws_lambda_permission" "api_gw" {
   principal     = "apigateway.amazonaws.com"
   source_arn    = "${aws_apigatewayv2_api.api.execution_arn}/*/*"
 }
+
+
+output "base_url" {
+  description = "Base URL for API Gateway stage."
+
+  value = aws_apigatewayv2_stage.api.invoke_url
+}
