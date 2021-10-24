@@ -8,11 +8,12 @@ resource "aws_apigatewayv2_api" "api" {
     max_age       = 300
   }
 }
-resource "aws_apigatewayv2_stage" "api" {
-  api_id      = aws_apigatewayv2_api.api.id
-  name        = var.env
-  auto_deploy = true
-}
+
+# resource "aws_apigatewayv2_stage" "api" {
+#   api_id      = aws_apigatewayv2_api.api.id
+#   name        = var.env
+#   auto_deploy = true
+# }
 
 resource "aws_apigatewayv2_integration" "api" {
   api_id             = aws_apigatewayv2_api.api.id
@@ -46,5 +47,5 @@ resource "aws_lambda_permission" "api_gw" {
 output "base_url" {
   description = "Base URL for API Gateway stage."
 
-  value = aws_apigatewayv2_stage.api.invoke_url
+  value = aws_apigatewayv2_api.api.invoke_arn
 }
