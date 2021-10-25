@@ -65,10 +65,20 @@ namespace Bookworm.Xapi.Controllers
                   },
                   new Book
                   {
-                    Id = "5",
+                    Id = "6",
                     Title = "The Eye of the World",
                     PhotoUrl = "https://images-na.ssl-images-amazon.com/images/I/51vYL46df+L._AC_SX184_.jpg",
                     Authors = "Robert Jordan",
+                    Price = "$13.99",
+                    Publisher = "",
+                    PublishedOn = ""
+                  },
+                  new Book
+                  {
+                    Id = "7",
+                    Title = "Beautiful World, Where Are You",
+                    PhotoUrl = "https://images-na.ssl-images-amazon.com/images/I/51cidczO3xS._AC_SX184_.jpg",
+                    Authors = "Sally Rooney",
                     Price = "$13.99",
                     Publisher = "",
                     PublishedOn = ""
