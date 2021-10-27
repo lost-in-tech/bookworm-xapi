@@ -10,6 +10,7 @@ resource "aws_lambda_function" "app" {
   source_code_hash = data.archive_file.src.output_base64sha256
   runtime          = "dotnetcore3.1"
   memory_size      = 128
+  architectures    = ["arm64"]
 
   environment {
     variables = {
