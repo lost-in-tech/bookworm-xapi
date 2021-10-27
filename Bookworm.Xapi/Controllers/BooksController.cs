@@ -82,6 +82,26 @@ namespace Bookworm.Xapi.Controllers
                     Price = "$13.99",
                     Publisher = "",
                     PublishedOn = ""
+                  },
+                  new Book{
+                    Id = "8",
+                    Title = "The Pragmatic Programmer: Your Journey To Mastery, 20th Anniversary Edition (2nd Edition)",
+                    PhotoUrl = "https://images-na.ssl-images-amazon.com/images/I/51cUVaBWZzL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
+                    Price = "$30.67",
+                    Authors = "David Thomas, Andrew Hunt",
+                    Publisher = "",
+                    PublishedOn = ""
+
+                  },
+                  new Book{
+                    Id = "9",
+                    Title = "Clean Code: A Handbook of Agile Software Craftsmanship",
+                    PhotoUrl = "https://images-na.ssl-images-amazon.com/images/I/41yafGMO+rL._SX258_BO1,204,203,200_.jpg",
+                    Price = "$37.95",
+                    Authors = "Robert C. Martin",
+                    Publisher = "",
+                    PublishedOn = ""
+
                   }
                 }
             });
