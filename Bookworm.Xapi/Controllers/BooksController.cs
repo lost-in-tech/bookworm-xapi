@@ -85,20 +85,40 @@ namespace Bookworm.Xapi.Controllers
                   },
                   new Book{
                     Id = "8",
-                    Title = "The Pragmatic Programmer: Your Journey To Mastery, 20th Anniversary Edition (2nd Edition)",
-                    PhotoUrl = "https://images-na.ssl-images-amazon.com/images/I/51cUVaBWZzL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
-                    Price = "$30.67",
-                    Authors = "David Thomas, Andrew Hunt",
+                    Title = "Aliens and Other Worlds by Lisa Harvey-Smith",
+                    PhotoUrl = "https://d30a6s96kk7rhm.cloudfront.net/original/978/176/076/9781760761165.jpg",
+                    Price = "$29.99",
+                    Authors = "Lisa Harvey-Smith, Tracie Grimwood",
                     Publisher = "",
                     PublishedOn = ""
 
                   },
                   new Book{
                     Id = "9",
-                    Title = "Clean Code: A Handbook of Agile Software Craftsmanship",
-                    PhotoUrl = "https://images-na.ssl-images-amazon.com/images/I/41yafGMO+rL._SX258_BO1,204,203,200_.jpg",
-                    Price = "$37.95",
-                    Authors = "Robert C. Martin",
+                    Title = "Exit Through the Gift Shop",
+                    PhotoUrl = "https://d30a6s96kk7rhm.cloudfront.net/original/readings/978/176/098/9781760983512.jpg",
+                    Price = "$16.99",
+                    Authors = "Maryam Master",
+                    Publisher = "",
+                    PublishedOn = ""
+
+                  },
+                  new Book{
+                    Id = "10",
+                    Title = "Perfect On Paper",
+                    PhotoUrl = "https://d30a6s96kk7rhm.cloudfront.net/original/978/144/495/9781444959277.jpg",
+                    Price = "$17.99",
+                    Authors = "Sophie Gonzales",
+                    Publisher = "",
+                    PublishedOn = ""
+
+                  },
+                  new Book{
+                    Id = "11",
+                    Title = "The Vanishing Half",
+                    PhotoUrl = "https://d30a6s96kk7rhm.cloudfront.net/original/978/034/970/9780349701479.jpg",
+                    Price = "$22.99",
+                    Authors = "Brit Bennett",
                     Publisher = "",
                     PublishedOn = ""
 
