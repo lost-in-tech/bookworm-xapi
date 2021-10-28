@@ -145,7 +145,7 @@ namespace Bookworm.Xapi.Controllers
                   new Book{
                     Id = "14",
                     Title = "From Blood and Ash",
-                    PhotoUrl = "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1597345150l/54911607._SY475_.jpg",
+                    PhotoUrl = "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1588843906l/52861201._SY475_.jpg",
                     Price = "$27.00",
                     Authors = "Jennifer L. Armentrout",
                     Publisher = "",
