@@ -55,9 +55,9 @@ namespace Bookworm.Xapi.Controllers
                   new Book
                   {
                     Id = "5",
-                    Title = "Harlem Shuffle: A Novel",
-                    PhotoUrl = "https://images-na.ssl-images-amazon.com/images/I/51NUTi4a5YL._AC_SX184_.jpg",
-                    Authors = "Colson Whitehead",
+                    Title = "Network Effect",
+                    PhotoUrl = "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1568667704l/52381770._SX318_SY475_.jpg",
+                    Authors = "Martha Wells",
                     Price = "$12.89",
                     Publisher = "",
                     PublishedOn = ""
