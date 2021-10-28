@@ -5,7 +5,6 @@ namespace Bookworm.Xapi.Controllers
     [Route("books")]
     public class BooksController : ControllerBase
     {
-
         [HttpGet("")]
         public IActionResult Get()
         {
@@ -119,6 +118,26 @@ namespace Bookworm.Xapi.Controllers
                     PhotoUrl = "https://d30a6s96kk7rhm.cloudfront.net/original/978/034/970/9780349701479.jpg",
                     Price = "$22.99",
                     Authors = "Brit Bennett",
+                    Publisher = "",
+                    PublishedOn = ""
+
+                  },
+                  new Book{
+                    Id = "12",
+                    Title = "The Midnight Library",
+                    PhotoUrl = "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1602190253l/52578297.jpg",
+                    Price = "$31.00",
+                    Authors = "Matt Haig",
+                    Publisher = "",
+                    PublishedOn = ""
+
+                  },
+                  new Book{
+                    Id = "13",
+                    Title = "The Guest List",
+                    PhotoUrl = "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1597345150l/54911607._SY475_.jpg",
+                    Price = "$22.00",
+                    Authors = "Lucy Foley",
                     Publisher = "",
                     PublishedOn = ""
 
