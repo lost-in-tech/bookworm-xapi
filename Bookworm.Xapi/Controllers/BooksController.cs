@@ -151,6 +151,15 @@ namespace Bookworm.Xapi.Controllers
                     Publisher = "",
                     PublishedOn = ""
 
+                  },
+                  new Book{
+                    Id = "15",
+                    Title = "To Sleep in a Sea of Stars",
+                    PhotoUrl = "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1583523112l/48829708.jpg",
+                    Price = "$28.50",
+                    Authors = "Christopher Paolini",
+                    Publisher = "",
+                    PublishedOn = ""
                   }
                 }
             });
