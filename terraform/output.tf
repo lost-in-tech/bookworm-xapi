@@ -6,3 +6,7 @@ output "cognito-client-secret" {
 output "cognito-client-id" {
   value = aws_cognito_user_pool_client.main.id
 }
+
+output "cognito_userpool_id" {
+  value = aws_cognito_user_pool.main.id
+}
