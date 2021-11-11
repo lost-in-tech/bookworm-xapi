@@ -14,6 +14,7 @@ resource "aws_lambda_function" "app" {
 
   environment {
     variables = {
+      Auth__Region = data.aws_region.current.name
       Auth__ClientId = aws_cognito_user_pool_client.main.id
       Auth__ClientSecret = aws_cognito_user_pool_client.main.client_secret
       Auth__UserPoolId = aws_cognito_user_pool.main.id
