@@ -48,7 +48,7 @@ resource "aws_iam_role_policy" "cognito" {
         Action: [
           "cognito-idp:*"
         ],
-        Resource: "${ aws_cognito_user_pool.main.id }",
+        Resource: aws_cognito_user_pool.main.id,
         Effect: "Allow"
       }
     ]
