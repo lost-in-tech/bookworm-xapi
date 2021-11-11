@@ -2,10 +2,10 @@ name: .NET Core
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
     tags: release-**
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
   workflow_dispatch:
     inputs:
@@ -23,7 +23,6 @@ on:
         default: "retail"
 
 jobs:
-         
   build:
     runs-on: ubuntu-latest
     env:
@@ -38,7 +37,7 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '3.1.x'
+          dotnet-version: "3.1.x"
 
       - name: Install dependencies
         run: dotnet restore ./Bookworm.Xapi.sln
@@ -48,13 +47,13 @@ jobs:
 
       - name: Test
         run: dotnet test ./Bookworm.Xapi.sln --no-restore --verbosity normal
-        
+
       - name: Publish
         run: dotnet publish ./Bookworm.Xapi/Bookworm.Xapi.csproj -c Release --no-build --output ./publish
 
       - name: Verify terraform
         run: terraform --version
-        working-directory: ".terraform"
+        working-directory: "terraform"
 
       - name: Configure AWS credential
         uses: aws-actions/configure-aws-credentials@v1
@@ -62,17 +61,17 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
-      
+
       - name: Init Terraform
-        id : terraform-init
+        id: terraform-init
         run: terraform init
-        working-directory: ".terraform"
+        working-directory: "terraform"
 
       - name: Create workspace
         run: terraform workspace select ${{ env.AWS_REGION }}-${{ env.GROUP_NAME }}-${{ env.ENV_NAME }} || terraform workspace new ${{ env.AWS_REGION }}-${{ env.GROUP_NAME }}-${{ env.ENV_NAME }}
-        working-directory: ".terraform"
+        working-directory: "terraform"
 
       - name: Apply Terraform
         id: terraform-apply
         run: terraform apply -auto-approve -var="env=${{ env.ENV_NAME }}" -var="group=${{ env.GROUP_NAME }}" -var="aws_region=${{ env.AWS_REGION }}"
-        working-directory: ".terraform"
+        working-directory: "terraform"

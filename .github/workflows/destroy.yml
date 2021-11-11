@@ -29,7 +29,7 @@ jobs:
 
       - name: Verify terraform
         run: terraform --version
-        working-directory: ".terraform"
+        working-directory: "terraform"
 
       - name: Configure AWS credential
         uses: aws-actions/configure-aws-credentials@v1
@@ -41,13 +41,13 @@ jobs:
       - name: Init Terraform
         id: terraform-init
         run: terraform init
-        working-directory: ".terraform"
+        working-directory: "terraform"
 
       - name: Create workspace
         run: terraform workspace select ${{ env.AWS_REGION }}-${{ env.GROUP_NAME }}-${{ env.ENV_NAME }} || terraform workspace new ${{ env.AWS_REGION }}-${{ env.GROUP_NAME }}-${{ env.ENV_NAME }}
-        working-directory: ".terraform"
+        working-directory: "terraform"
 
       - name: Destroy Terraform
         id: terraform-destroy
         run: terraform destroy -auto-approve -var="env=${{ env.ENV_NAME }}" -var="group=${{ env.GROUP_NAME }}" -var="aws_region=${{ env.AWS_REGION }}"
-        working-directory: ".terraform"
+        working-directory: "terraform"
