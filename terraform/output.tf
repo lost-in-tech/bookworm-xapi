@@ -10,3 +10,7 @@ output "cognito-client-id" {
 output "cognito_userpool_id" {
   value = aws_cognito_user_pool.main.id
 }
+
+output "cognito_domain_endpoint" {
+  value = aws_cognito_user_pool_domain.main.domain
+}
