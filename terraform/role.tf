@@ -37,3 +37,20 @@ resource "aws_iam_role_policy" "log_group" {
 }
 EOF
 }
+
+resource "aws_iam_role_policy" "cognito" {
+  name   = "role-lambda-cognito-${var.app_name}-${var.group}-${var.env}"
+  role   = aws_iam_role.lambda.id
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action: [
+          "cognito-idp:*"
+        ],
+        Resource: "${ aws_cognito_user_pool.main.id }",
+        Effect: "Allow"
+      }
+    ]
+  })
+}
