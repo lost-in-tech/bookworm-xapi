@@ -14,13 +14,10 @@ resource "aws_lambda_function" "app" {
 
   environment {
     variables = {
-      "Auth:ClientId" = aws_cognito_user_pool_client.main.id
-      "Auth:ClientSecret" = aws_cognito_user_pool_client.main.client_secret
-      "Auth:UserPoolId" = aws_cognito_user_pool.main.id
-      cognito_domain_endpoint = aws_cognito_user_pool_domain.main.domain
-      cognito_userpool_id = aws_cognito_user_pool.main.id
-      cognito_client_id = aws_cognito_user_pool_client.main.id
-      cognito_client_secret = aws_cognito_user_pool_client.main.client_secret
+      Auth__ClientId = aws_cognito_user_pool_client.main.id
+      Auth__ClientSecret = aws_cognito_user_pool_client.main.client_secret
+      Auth__UserPoolId = aws_cognito_user_pool.main.id
+      Auth__Domain = aws_cognito_user_pool_domain.main.domain
     }
   }
 
