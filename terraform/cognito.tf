@@ -51,12 +51,6 @@ resource "aws_cognito_user_pool_client" "main" {
   generate_secret = true
   read_attributes = [ "email", "name" ]
   write_attributes = [ "name" ]
-  
-  tags = {
-    Name = "${var.group}-${var.app_name}-${var.env}-userpool"
-    Group = var.group
-    Env = var.env
-  }
 }
 
 resource "aws_cognito_user_pool_domain" "main" {
