@@ -45,10 +45,10 @@ namespace Bookworm.Xapi.Controllers
               Value = request.Name
             });
 
-            var provider = new AmazonCognitoIdentityProviderClient();
-
             try
             {
+
+            var provider = new AmazonCognitoIdentityProviderClient();
                 var rsp = provider.SignUpAsync(signupRequest);
 
                 return Ok(rsp);
