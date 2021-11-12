@@ -1,7 +1,14 @@
+using Amazon;
+using Amazon.CognitoIdentityProvider;
+using Amazon.CognitoIdentityProvider.Model;
+using Amazon.Extensions.CognitoAuthentication;
+using Amazon.Runtime;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+
 
 namespace Bookworm.Xapi.Controllers
 {
@@ -19,7 +26,37 @@ namespace Bookworm.Xapi.Controllers
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody]RegisterRequest request)
     {
-      return Ok("work in progress...");
+
+            var signupRequest = new SignUpRequest
+            {
+              ClientId = config.Value.ClientId,              
+              Password = request.Password,
+              Username = request.Email
+            };
+
+            signupRequest.UserAttributes.Add(new AttributeType
+            {
+              Name = "email",
+              Value = request.Email
+            });
+
+            signupRequest.UserAttributes.Add(new AttributeType{
+              Name = "name",
+              Value = request.Name
+            });
+
+            var provider = new AmazonCognitoIdentityProviderClient();
+
+            try
+            {
+                var rsp = provider.SignUpAsync(signupRequest);
+
+                return Ok(rsp);
+            }
+            catch(Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
     }
   }
 
