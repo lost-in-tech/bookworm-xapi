@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 
 namespace Bookworm.Xapi.Controllers
@@ -10,7 +11,9 @@ namespace Bookworm.Xapi.Controllers
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody]RegisterRequest request)
     {
-      return Ok("Created");
+      return Ok(new {
+        ClientId = Environment.GetEnvironmentVariable("Auth__ClientId")
+      });
     }
   }
 
