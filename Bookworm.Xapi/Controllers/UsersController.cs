@@ -34,12 +34,6 @@ namespace Bookworm.Xapi.Controllers
               Username = request.Email
             };
 
-            signupRequest.UserAttributes.Add(new AttributeType
-            {
-              Name = "email",
-              Value = request.Email
-            });
-
             signupRequest.UserAttributes.Add(new AttributeType{
               Name = "name",
               Value = request.Name
