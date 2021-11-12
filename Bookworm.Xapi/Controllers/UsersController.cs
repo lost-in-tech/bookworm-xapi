@@ -19,7 +19,7 @@ namespace Bookworm.Xapi.Controllers
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody]RegisterRequest request)
     {
-      return Ok(config.Value);
+      return Ok("work in progress...");
     }
   }
 
