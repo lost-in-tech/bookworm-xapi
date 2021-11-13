@@ -37,9 +37,10 @@ namespace Bookworm.Xapi
         {
             if (env.IsDevelopment())
             {
+            app.UseDeveloperExceptionPage();
                 
             }
-            app.UseDeveloperExceptionPage();
+            app.UseExceptionHandler(UnhandledErrorHandler.Handle<Startup>);
 
             app.UseHttpsRedirection();
 
@@ -57,4 +58,6 @@ namespace Bookworm.Xapi
             });
         }
     }
+
+
 }
