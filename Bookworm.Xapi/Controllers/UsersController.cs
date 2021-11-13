@@ -41,9 +41,10 @@ namespace Bookworm.Xapi.Controllers
                     }
                   }
                 };
-                var rsp = await provider.SignUpAsync(signupRequest);
 
-                return Ok(rsp.UserConfirmed);
+                var rsp = await provider.SignUpAsync(signupRequest);
+                
+                return Ok(rsp);
             }
           catch(Exception e)
           {
