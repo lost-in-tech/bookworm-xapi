@@ -29,7 +29,6 @@ namespace Bookworm.Xapi.Controllers
           try
           {
             var provider = new AmazonCognitoIdentityProviderClient(RegionEndpoint.GetBySystemName(config.Value.Region));
-                return Ok(request);
             }
           catch(Exception e)
           {
