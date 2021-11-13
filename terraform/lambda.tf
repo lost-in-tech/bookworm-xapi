@@ -19,6 +19,7 @@ resource "aws_lambda_function" "app" {
       Auth__ClientSecret = aws_cognito_user_pool_client.main.client_secret
       Auth__UserPoolId = aws_cognito_user_pool.main.id
       Auth__Domain = aws_cognito_user_pool_domain.main.domain
+      LAMBDA_NET_SERIALIZER_DEBUG = true
     }
   }
 
