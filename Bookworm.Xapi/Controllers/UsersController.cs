@@ -29,6 +29,21 @@ namespace Bookworm.Xapi.Controllers
           try
           {
             var provider = new AmazonCognitoIdentityProviderClient(RegionEndpoint.GetBySystemName(config.Value.Region));
+                var signupRequest = new SignUpRequest 
+                { 
+                  ClientId = config.Value.ClientId,
+                  Password = request.Password,
+                  Username = request.Email,
+                  UserAttributes = new List<AttributeType>{
+                    new AttributeType{
+                      Name = "name",
+                      Value = request.Name
+                    }
+                  }
+                };
+                var rsp = await provider.SignUpAsync(signupRequest);
+
+                return Ok(rsp.UserConfirmed);
             }
           catch(Exception e)
           {
