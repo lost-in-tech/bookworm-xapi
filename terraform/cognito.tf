@@ -48,9 +48,10 @@ resource "aws_cognito_user_pool" "main" {
 resource "aws_cognito_user_pool_client" "main" {
   name = "${var.group}-${var.app_name}-${var.env}-xapiclient"
   user_pool_id = aws_cognito_user_pool.main.id
-  generate_secret = true
+  generate_secret = false
   read_attributes = [ "email", "name" ]
   write_attributes = [ "name" ]
+  explicit_auth_flows = ["ADMIN_NO_SRP_AUTH"]
 }
 
 resource "aws_cognito_user_pool_domain" "main" {
