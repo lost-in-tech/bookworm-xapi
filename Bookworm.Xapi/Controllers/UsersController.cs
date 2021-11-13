@@ -26,7 +26,7 @@ namespace Bookworm.Xapi.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register()
         {
-            return Ok("hello");
+            return Ok(config.Value);
         }
     }
 
