@@ -44,9 +44,15 @@ namespace Bookworm.Xapi.Controllers
             {
 
             var provider = new AmazonCognitoIdentityProviderClient();
-                var rsp = provider.SignUpAsync(signupRequest);
 
-                return Ok(rsp);
+                var userPool = new CognitoUserPool(config.Value.UserPoolId, config.Value.ClientId, provider);
+
+                await userPool.SignUpAsync(request.Email, request.Password, new Dictionary<string, string>
+                {
+                    ["name"] = request.Name
+                }, new Dictionary<string,string>());
+                
+                return Ok("Completed");
             }
             catch(Exception e)
             {
