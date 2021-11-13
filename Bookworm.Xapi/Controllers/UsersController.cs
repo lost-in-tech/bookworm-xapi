@@ -31,7 +31,8 @@ namespace Bookworm.Xapi.Controllers
             {
               ClientId = config.Value.ClientId,              
               Password = request.Password,
-              Username = request.Email
+              Username = request.Email,
+              SecretHash = config.Value.ClientSecret
             };
 
             signupRequest.UserAttributes.Add(new AttributeType{
