@@ -24,12 +24,13 @@ namespace Bookworm.Xapi.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register()
+        public async Task<IActionResult> Register([FromBody] RegisterRequest request)
         {
           try
           {
             var provider = new AmazonCognitoIdentityProviderClient(RegionEndpoint.GetBySystemName(config.Value.Region));
-          }
+
+            }
           catch(Exception e)
           {
                 return Ok(e.Message);
