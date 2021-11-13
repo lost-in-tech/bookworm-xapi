@@ -19,7 +19,7 @@ namespace Bookworm.Xapi.Controllers
         private readonly IOptions<UserPoolConfig> config;
 
         public UsersController(IOptions<UserPoolConfig> config)
-    {
+        {
             this.config = config;
         }
 
