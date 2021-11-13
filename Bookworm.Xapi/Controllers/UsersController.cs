@@ -26,20 +26,6 @@ namespace Bookworm.Xapi.Controllers
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody]RegisterRequest request)
     {
-
-            var signupRequest = new SignUpRequest
-            {
-              ClientId = config.Value.ClientId,              
-              Password = request.Password,
-              Username = request.Email,
-              SecretHash = config.Value.ClientSecret
-            };
-
-            signupRequest.UserAttributes.Add(new AttributeType{
-              Name = "name",
-              Value = request.Name
-            });
-
             try
             {
 
@@ -56,6 +42,7 @@ namespace Bookworm.Xapi.Controllers
             }
             catch(Exception e)
             {
+                Console.WriteLine(e.Message);
                 return StatusCode(500, e.Message);
             }
     }
