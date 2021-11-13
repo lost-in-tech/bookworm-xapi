@@ -16,11 +16,10 @@ namespace Bookworm.Xapi.Controllers
   [Route("users")]
   public class UsersController : ControllerBase
   {
-        private readonly IOptions<UserPoolConfig> config;
+        private readonly IOptions<UserPoolConfig> config = null;
 
-        public UsersController(IOptions<UserPoolConfig> config)
+        public UsersController()
         {
-            this.config = config;
         }
 
     [HttpPost("register")]
