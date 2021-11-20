@@ -4,12 +4,16 @@ resource "aws_cognito_user_pool" "main" {
 
   username_attributes = ["email"]
   auto_verified_attributes = [ "email" ]
-
+  
   account_recovery_setting {
     recovery_mechanism {
       name = "verified_email"
       priority = 1
     }
+  }
+
+  verification_message_template {
+    default_email_option = "CONFIRM_WITH_LINK"
   }
 
   username_configuration {
