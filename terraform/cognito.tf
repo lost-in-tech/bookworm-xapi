@@ -1,6 +1,10 @@
 resource "aws_cognito_user_pool" "main" {
   name = "${var.group}-${var.app_name}-${var.env}-userpool"
 
+
+  username_attributes = ["email"]
+  auto_verified_attributes = [ "email" ]
+
   account_recovery_setting {
     recovery_mechanism {
       name = "verified_email"
@@ -20,8 +24,6 @@ resource "aws_cognito_user_pool" "main" {
     require_uppercase = false
     require_symbols = false
   }
-
-  username_attributes = ["email"]
 
   admin_create_user_config {
     allow_admin_create_user_only = false
@@ -51,7 +53,10 @@ resource "aws_cognito_user_pool_client" "main" {
   generate_secret = false
   read_attributes = [ "email", "name" ]
   write_attributes = [ "name" ]
-  explicit_auth_flows = ["ADMIN_NO_SRP_AUTH"]
+  explicit_auth_flows = ["ALLOW_REFRESH_TOKEN_AUTH","ALLOW_USER_PASSWORD_AUTH","ALLOW_ADMIN_USER_PASSWORD_AUTH"]
+
+  refresh_token_validity = 90
+  prevent_user_existence_errors = "ENABLED"
 }
 
 resource "aws_cognito_user_pool_domain" "main" {
