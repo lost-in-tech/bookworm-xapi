@@ -57,7 +57,7 @@ resource "aws_cognito_user_pool_client" "main" {
   generate_secret = false
   read_attributes = [ "email", "name" ]
   write_attributes = [ "name" ]
-  explicit_auth_flows = ["USER_SRP_AUTH"]
+  explicit_auth_flows = ["ADMIN_NO_SRP_AUTH"]
 
   refresh_token_validity = 90
   prevent_user_existence_errors = "ENABLED"
