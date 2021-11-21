@@ -41,11 +41,30 @@ resource "aws_apigatewayv2_integration" "api" {
   payload_format_version = "2.0"
 }
 
-resource "aws_apigatewayv2_route" "api" {
+resource "aws_apigatewayv2_route" "public" {
   api_id    = aws_apigatewayv2_api.api.id
   route_key = "ANY /public/{proxy+}"
 
   target = "integrations/${aws_apigatewayv2_integration.api.id}"
+}
+
+resource "aws_apigatewayv2_route" "private" {
+  api_id    = aws_apigatewayv2_api.api.id
+  route_key = "ANY /private/{proxy+}"
+
+  target = "integrations/${aws_apigatewayv2_integration.api.id}"
+}
+
+resource "aws_apigatewayv2_authorizer" "private" {
+  api_id = aws_apigatewayv2_api.api.id
+  authorizer_type = "JWT"
+  identity_sources = [ "$request.header.Authorization" ]
+  name = "private-endpoint-auth"
+
+  jwt_configuration {
+    audience = ["*"]
+    issuer = "https://${aws_cognito_user_pool.main.endpoint}"
+  }
 }
 
 resource "aws_cloudwatch_log_group" "api_gw" {
