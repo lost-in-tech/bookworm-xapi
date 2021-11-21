@@ -53,6 +53,9 @@ resource "aws_apigatewayv2_route" "private" {
   route_key = "ANY /private/{proxy+}"
 
   target = "integrations/${aws_apigatewayv2_integration.api.id}"
+
+  authorization_type = "JWT"
+  authorizer_id = aws_apigatewayv2_authorizer.private.id
 }
 
 resource "aws_apigatewayv2_authorizer" "private" {
