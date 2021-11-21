@@ -55,7 +55,7 @@ resource "aws_apigatewayv2_route" "private" {
   target = "integrations/${aws_apigatewayv2_integration.api.id}"
 
   authorization_type = "JWT"
-  authorizer_id = aws_apigatewayv2_authorizer.private.id
+  authorizer_id = aws_apigatewayv2_authorizer.private.id  
 }
 
 resource "aws_apigatewayv2_authorizer" "private" {
@@ -65,7 +65,7 @@ resource "aws_apigatewayv2_authorizer" "private" {
   name = "private-endpoint-auth"
 
   jwt_configuration {
-    audience = ["*"]
+    audience = [ aws_cognito_user_pool_client.main.id ]
     issuer = "https://${aws_cognito_user_pool.main.endpoint}"
   }
 }
