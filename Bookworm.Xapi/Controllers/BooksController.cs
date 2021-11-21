@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Bookworm.Xapi.Controllers
 {
-    [Route("books")]
+    [Route("public/books")]
     public class BooksController : ControllerBase
     {
         [HttpGet("")]
