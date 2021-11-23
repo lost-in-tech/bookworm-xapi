@@ -67,3 +67,14 @@ resource "aws_cognito_user_pool_domain" "main" {
   domain       =  "${var.group}-${var.app_name}-${var.env}"
   user_pool_id = aws_cognito_user_pool.main.id
 }
+
+resource "aws_cognito_resource_server" "main" {
+  name =  "resource-server-${var.group}-${var.app_name}-${var.env}"
+  identifier = "https://${var.group}-${var.app_name}-${var.env}.com.au"
+  user_pool_id = aws_cognito_user_pool.main.id
+
+  scope {
+    scope_name = "customer"
+    scope_description = "customer of the application"
+  }
+}
