@@ -63,7 +63,6 @@ resource "aws_apigatewayv2_authorizer" "private" {
   authorizer_type = "JWT"
   identity_sources = [ "$request.header.Authorization" ]
   name = "private-endpoint-auth"
-  authorizer_result_ttl_in_seconds = 300
 
   jwt_configuration {
     audience = [ aws_cognito_user_pool_client.main.id ]
